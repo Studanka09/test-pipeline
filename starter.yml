@@ -1,0 +1,9 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      powershell: 7.0
+  build:
+    commands:
+      - pwsh -File .test-pipeline/.github/workflows/test.ps1

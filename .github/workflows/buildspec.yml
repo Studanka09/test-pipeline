@@ -6,4 +6,4 @@ phases:
       powershell: 7.0
   build:
     commands:
-      - pwsh -File .test-pipeline/.github/workflows/test.ps1
+      - pwsh -File test.ps1

@@ -5,8 +5,13 @@ phases:
     runtime-versions:
       nodejs: 16
     commands:
-    - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | NVM_DIR="s3://codepipeline-eu-central-1-202329425374/testml/SourceArti/.nvm" bash
-    - aws s3 cp s3://codepipeline-eu-central-1-202329425374/testml/SourceArti/nvm.sh s3://codepipeline-eu-central-1-202329425374/testml/SourceArti/.nvm/nvm.sh
+    - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | NVM_DIR="/path/to/desired/directory/.nvm" bash
+- aws s3 cp s3://codepipeline-eu-central-1-202329425374/testml/SourceArti/nvm.sh /path/to/desired/directory/.nvm/nvm.sh
+- export NVM_DIR="/path/to/desired/directory/.nvm"
+- source $NVM_DIR/nvm.sh
+- nvm install 14.17.0
+- npm install -g powershell
+
       - export NVM_DIR="$HOME/.nvm"
       - find $NVM_DIR -name "nvm.sh"
       - source $NVM_DIR/nvm.sh

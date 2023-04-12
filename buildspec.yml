@@ -7,8 +7,8 @@ phases:
     commands:
       - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | NVM_DIR="$HOME/.nvm" bash
       - export NVM_DIR="$HOME/.nvm"
-      - find / -name "nvm.sh"
-      - sudo /root/.nvm/nvm.sh
+      - find $NVM_DIR -name "nvm.sh"
+      - source $NVM_DIR/nvm.sh
       - nvm install 14.17.0
       - npm install -g powershell
   build:

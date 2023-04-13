@@ -3,12 +3,18 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 16
-    commands:
-      - aws s3 cp s3://allwyn-demo-bucket/nvm.sh .
-      - source nvm.sh
-      - nvm install 14.17.0
-      - npm install -g powershell
+      powershell: 7.0
   build:
     commands:
-      - powershell -File path/to/script.ps1
+      - powershell.exe -File test.ps1 | Out-File -FilePath random_output.txt -Encoding UTF8
+artifacts:
+  files:
+    - random_output.txt
+
+artifacts:
+  files:
+    - random_output.txt
+
+  - AWS_ACCESS_KEY_ID: AKIAQDG5QCUMWENX2TT5
+  - AWS_SECRET_ACCESS_KEY: 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
+  - S3_BUCKET: mlprepare

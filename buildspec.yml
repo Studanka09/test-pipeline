@@ -14,6 +14,3 @@ artifacts:
 artifacts:
   files:
     - random_output.txt
-  - AWS_ACCESS_KEY_ID: AKIAQDG5QCUMWENX2TT5
-  - AWS_SECRET_ACCESS_KEY: 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
-  - S3_BUCKET: mlprepare

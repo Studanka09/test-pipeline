@@ -1,1 +1,1 @@
-﻿Get-ChildItem | Select-Object Name
+Write-Host "Ahoj"

@@ -1,1 +1,1 @@
-Write-Host "Ahoj"
+$output = "Ahoj"

@@ -39,3 +39,4 @@ jobs:
     - name: Copy data to S3
       shell: pwsh
       run : Write-S3Object -BucketName ${{ env.S3_BUCKET_NAME }} -Key ${{ env.DEPLOY_PACKAGE_NAME }} -File ${{ env.DEPLOY_PACKAGE_NAME }}
+

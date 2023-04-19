@@ -34,7 +34,7 @@ jobs:
       id    : installawspwsh
       shell : pwsh
       run: |
-        ./install-aws-powershell.ps1
+        ./install/test.ps1
         
     - name: Copy data to S3
       shell: pwsh

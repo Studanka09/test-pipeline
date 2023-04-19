@@ -1,4 +1,4 @@
-name: Allwyn-CI-Pipeline-to-AWS-S3
+name: Allwyn-CI-Pipeline-Power
 env:
   S3_BUCKET_NAME      : "mlprepare"
   AWS_REGION_NAME     : "eu-central-1"

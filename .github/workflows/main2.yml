@@ -1,0 +1,41 @@
+name: Allwyn-CI-Pipeline-to-AWS-S3
+env:
+  S3_BUCKET_NAME      : "mlprepare"
+  AWS_REGION_NAME     : "eu-central-1"
+  DEPLOY_PACKAGE_NAME : "data_${{ github.sha }}.zip"
+
+on:
+  push:
+    branches: 
+      - master
+  
+      
+jobs:
+  ci_part:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Git clone our repo
+      uses: actions/checkout@v2
+      
+    - name: Create ZIP deployment package
+      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./src -x *-git*
+      
+      
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id     : ${{secrets.ACCESS_KEY_ID}}
+        aws-secret-access-key : ${{secrets.SECRET_ACCESS_KEY}}
+        aws-region            : ${{env.AWS_REGION_NAME}}
+        
+    - name  : Install AWS PowerShell module locally
+      id    : installawspwsh
+      shell : pwsh
+      run: |
+        ./install-aws-powershell.ps1
+        
+    - name: Copy data to S3
+      shell: pwsh
+      run : Write-S3Object -BucketName ${{ env.S3_BUCKET_NAME }} -Key ${{ env.DEPLOY_PACKAGE_NAME }} -File ${{ env.DEPLOY_PACKAGE_NAME }}

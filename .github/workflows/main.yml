@@ -30,3 +30,5 @@ jobs:
         
     - name: Copy data to S3
       run : aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{ env.S3_BUCKET_NAME }}/
+      
+      
